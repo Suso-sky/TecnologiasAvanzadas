@@ -3,12 +3,17 @@ package com.taller1.Modelo;
 import java.io.Serializable;
 
 
-public class Estudiante extends Persona implements Serializable {
+public class Estudiante extends Persona implements Serializable, Identificable {
 
     private String codigoEstudiante;
     private String programaEstudiante;
     private Double promedioEstudiante;
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public int getId() {
+        return getIdPersona();
+    }
 
     public Estudiante(int idPersona, String namePersona, String apellidosPersona, Direccion direccionPersona, String codigoEstudiante, String programaEstudiante,
             Double promedioEstudiante) {

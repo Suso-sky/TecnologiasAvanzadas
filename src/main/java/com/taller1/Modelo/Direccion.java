@@ -4,7 +4,7 @@ package com.taller1.Modelo;
 import java.io.Serializable;
 
 
-public class Direccion implements Serializable{
+public class Direccion implements Serializable, Identificable {
     
     private int idDireccion;
     private Municipio municipioDireccion;
@@ -16,6 +16,10 @@ public class Direccion implements Serializable{
     private String descripcionDireccion;
     private  static  final  long serialVersionUID = 1L;
 
+    @Override
+    public int getId() {
+        return idDireccion;
+    }
 
     public Direccion(int idDireccion, Municipio municipioDireccion, Departamento departamento, Pais paisDireccion, String calleDireccion, String carreraDireccion,
                      String coordenadaDireccion, String descripcionDireccion) {

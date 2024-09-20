@@ -3,7 +3,7 @@ package com.taller1.Modelo;
 import java.io.Serializable;
 
 
-public class Departamento implements Serializable {
+public class Departamento implements Serializable, Identificable {
 
     private int idDepartamento;
     private String nombreDepartamento;
@@ -14,6 +14,11 @@ public class Departamento implements Serializable {
         this.idDepartamento = idDepartamento;
         this.nombreDepartamento = nombreDepartamento;
         this.paisDepartamento = paisDepartamento;
+    }
+
+    @Override
+    public int getId() {
+        return idDepartamento;
     }
 
     public int getIdDepartamento() {

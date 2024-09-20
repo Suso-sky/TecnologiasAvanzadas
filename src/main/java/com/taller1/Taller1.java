@@ -2,73 +2,52 @@
 //Juan Felipe Gonzalez - 4710
 package com.taller1;
 
-import com.taller1.Config.GestorDatosArchivos;
-import com.taller1.Modelo.Municipio;
-import com.taller1.Modelo.Pais;
-import com.taller1.Modelo.EstudiantesInscritos;
-import com.taller1.Modelo.Direccion;
-import com.taller1.Modelo.Estudiante;
-import com.taller1.Modelo.ListadoTodos;
-import com.taller1.Modelo.PersonalInscrito;
-import com.taller1.Modelo.Cargo;
-import com.taller1.Modelo.Persona;
-import com.taller1.Modelo.Departamento;
-import com.taller1.Modelo.Empleado;
-import com.taller1.DAO.PersonaH2;
-import com.taller1.DAO.DepartamentoH2;
-import com.taller1.DAO.MunicipioH2;
-import com.taller1.DAO.PaisH2;
-import com.taller1.DAO.EmpleadoH2;
-import com.taller1.DAO.EstudianteH2;
-import com.taller1.DAO.CargoH2;
-import com.taller1.DAO.DireccionH2;
-import java.io.IOException;
-
 public class Taller1 {
 
     public static void main(String[] args) {
 
-        Pais colombia = new Pais(1, "colombia");
-        GestorDatosArchivos.objetoGuardarArchivoPlano(colombia, "Pais.txt");
+        System.out.println("Falta Hacer lo del controlador");
+       /* Pais colombia = new Pais(1, "colombia");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(colombia, "Pais.txt");
         Pais argentina = new Pais(2, "Argentina");
-        GestorDatosArchivos.objetoGuardarArchivoPlano(argentina, "Pais.txt");
-        GestorDatosArchivos.leerArchivoPlano("Pais.txt");
-        GestorDatosArchivos.actualizarArchivo(colombia, "Pais.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(argentina, "Pais.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Pais.txt");
+        GestorDatosArchivosBinarios.actualizarArchivo(colombia, "Pais.txt");
                 
         Departamento meta = new Departamento(1, "Meta", colombia);
-        GestorDatosArchivos.objetoGuardarArchivoPlano(meta, "Departamento.txt");
-        GestorDatosArchivos.leerArchivoPlano("Departamento.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(meta, "Departamento.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Departamento.txt");
     
         Municipio villavicencio = new Municipio(1, "Villavicencio", meta);
-        GestorDatosArchivos.objetoGuardarArchivoPlano(villavicencio, "Municipio.txt");
-        GestorDatosArchivos.leerArchivoPlano("Municipio.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(villavicencio, "Municipio.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Municipio.txt");
 
         Direccion direccion1 = new Direccion(1, villavicencio, meta, colombia, "15", "14", "SUR", "BARRIO PINILLA");
-        GestorDatosArchivos.objetoGuardarArchivoPlano(direccion1, "Direccion.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(direccion1, "Direccion.txt");
         Direccion direccion2 = new Direccion(2, villavicencio, meta, argentina, "115", "24", "NORTE", "BARRIO MANARE");
-        GestorDatosArchivos.objetoGuardarArchivoPlano(direccion2, "Direccion.txt");
-        GestorDatosArchivos.leerArchivoPlano("Direccion.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(direccion2, "Direccion.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Direccion.txt");
 
         Persona persona1 = new Persona(1, "Brandon", "Barreto", direccion1);
         
         Estudiante estudiante1 = new Estudiante(1, "Brandon", "Barreto", direccion1, "160004701", "Ingenieria de Sistemas", 3.7);
         Estudiante estudiante2 = new Estudiante(2, "Juan Felipe", "Mosquera", direccion1, "160004710", "Ingenieria de Sistemas", 3.8);
-        GestorDatosArchivos.objetoGuardarArchivoPlano(estudiante1, "Estudiante.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(estudiante1, "Estudiante.txt");
         Estudiante estudiante3 = new Estudiante(3, "Gaby", "Lopez", direccion2, "160001121", "Ingenieria Ambiental", 2.7);
-        GestorDatosArchivos.objetoGuardarArchivoPlano(estudiante2, "Estudiante.txt");
-        GestorDatosArchivos.leerArchivoPlano("Estudiante.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(estudiante2, "Estudiante.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Estudiante.txt");
 
         Cargo admin = new Cargo(1, "Admin");
-        GestorDatosArchivos.objetoGuardarArchivoPlano(admin, "Cargo.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(admin, "Cargo.txt");
         Cargo oficial = new Cargo(2, "Oficial");
-        GestorDatosArchivos.objetoGuardarArchivoPlano(oficial, "Cargo.txt");
-        GestorDatosArchivos.leerArchivoPlano("Cargo.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(oficial, "Cargo.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Cargo.txt");
 
         Empleado empleado1 = new Empleado(1, "Brandon", "Barreto", direccion1, admin, 1000.00);
-        GestorDatosArchivos.objetoGuardarArchivoPlano(empleado1, "Empleado.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(empleado1, "Empleado.txt");
         Empleado empleado2 = new Empleado(4, "Angel", "Parra", direccion2, oficial, 2000.00);
-        GestorDatosArchivos.objetoGuardarArchivoPlano(empleado2, "Empleado.txt");
-        GestorDatosArchivos.leerArchivoPlano("Empleado.txt");
+        GestorDatosArchivosBinarios.objetoGuardarArchivoPlano(empleado2, "Empleado.txt");
+        GestorDatosArchivosBinarios.leerArchivoPlano("Empleado.txt");
 
         EstudiantesInscritos estudiantesInscritos = new EstudiantesInscritos();
         estudiantesInscritos.adicionarEstudiante(estudiante1);
@@ -85,26 +64,26 @@ public class Taller1 {
         listadoTodos.adicionarItem(oficial);
 
         try {
-            GestorDatosArchivos.ObjetoGuardarArchivoBinario(estudiantesInscritos, "ListadoEstudiantesInscritos.bin");
-            GestorDatosArchivos.leerArchivoBinario("ListadoEstudiantesInscritos.bin");
-            GestorDatosArchivos.ObjetoGuardarArchivoBinario(personalInscrito, "ListadoPersonalInscrito.bin");
-            GestorDatosArchivos.leerArchivoBinario("ListadoPersonalInscrito.bin");
-            GestorDatosArchivos.ObjetoGuardarArchivoBinario(listadoTodos, "ListadoTodos.bin");
-            GestorDatosArchivos.leerArchivoBinario("ListadoTodos.bin");
+            GestorDatosArchivosBinarios.ObjetoGuardarArchivoBinario(estudiantesInscritos, "ListadoEstudiantesInscritos.bin");
+            GestorDatosArchivosBinarios.leerArchivoBinario("ListadoEstudiantesInscritos.bin");
+            GestorDatosArchivosBinarios.ObjetoGuardarArchivoBinario(personalInscrito, "ListadoPersonalInscrito.bin");
+            GestorDatosArchivosBinarios.leerArchivoBinario("ListadoPersonalInscrito.bin");
+            GestorDatosArchivosBinarios.ObjetoGuardarArchivoBinario(listadoTodos, "ListadoTodos.bin");
+            GestorDatosArchivosBinarios.leerArchivoBinario("ListadoTodos.bin");
 
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Cargo.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Cargo.txt");
             
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Departamento.txt");
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Direccion.txt");
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Empleado.txt");
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Estudiante.txt");
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Municipio.txt");
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Pais.txt");
-            GestorDatosArchivos.objetosEliminarArchivoPlano("Persona.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Departamento.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Direccion.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Empleado.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Estudiante.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Municipio.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Pais.txt");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoPlano("Persona.txt");
 
-            GestorDatosArchivos.objetosEliminarArchivoBinario("ListadoEstudiantesInscritos.bin");
-            GestorDatosArchivos.objetosEliminarArchivoBinario("ListadoPersonalInscrito.bin");
-            GestorDatosArchivos.objetosEliminarArchivoBinario("ListadoTodos.bin");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoBinario("ListadoEstudiantesInscritos.bin");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoBinario("ListadoPersonalInscrito.bin");
+            GestorDatosArchivosBinarios.objetosEliminarArchivoBinario("ListadoTodos.bin");
         } catch (IOException | ClassNotFoundException exception) {
             exception.printStackTrace(System.out);
         }
@@ -164,6 +143,6 @@ public class Taller1 {
             gestorDatosPais.borrar(1);
             gestorDatosCargo.borrar(1);
         }
-    }
+    }*/
 
 }

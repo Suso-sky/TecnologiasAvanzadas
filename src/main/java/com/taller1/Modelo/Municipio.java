@@ -3,12 +3,17 @@ package com.taller1.Modelo;
 import java.io.Serializable;
 
 
-public class Municipio implements Serializable {
+public class Municipio implements Serializable, Identificable {
 
     private int idMunicipio;
     private String nombreMunicipio;
     private Departamento departamentoMunicipio;
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public int getId() {
+        return idMunicipio;
+    }
 
     public Municipio(int idMunicipio, String nombreMunicipio, Departamento departamentoMunicipio) {
         this.idMunicipio = idMunicipio;

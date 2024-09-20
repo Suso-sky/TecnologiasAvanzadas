@@ -1,12 +1,10 @@
 package com.taller1.Modelo;
 
-import java.io.Serializable;
-
-
-public class Cargo implements Todos, Serializable {
+public class Cargo implements Todos, Identificable {
 
     private int idCargo;
     private String nombreCargo;
+
     private static final long serialVersionUID = 1L;
 
     public Cargo(int idCargo, String nombreCargo) {
@@ -14,7 +12,8 @@ public class Cargo implements Todos, Serializable {
         this.nombreCargo = nombreCargo;
     }
 
-    public int getIdCargo() {
+    @Override
+    public int getId() {
         return idCargo;
     }
 
@@ -31,6 +30,4 @@ public class Cargo implements Todos, Serializable {
     public String information() {
         return toString();
     }
-
 }
-

@@ -5,13 +5,18 @@ import java.io.Serializable;
 
 
 
-public class Persona implements Todos, Serializable {
+public class Persona implements Todos, Serializable, Identificable {
     
     private int idPersona;
     private String nombrePersona;
     private String apellidosPersona;
     private Direccion direccionPersona;
     private  static  final  long serialVersionUID = 1L;
+
+    @Override
+    public int getId() {
+        return idPersona;
+    }
 
 
     public Persona(int idPersona, String nombrePersona, String apellidosPersona, Direccion direccionPersona) {

@@ -1,16 +1,15 @@
 package com.taller1.Modelo;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
 
 
 
 public class PersonalInscrito implements Serializable {
     private List<Persona> listadoPersonal;
     private  static  final  long serialVersionUID = 1L;
-
 
     public PersonalInscrito() {
         this.listadoPersonal = new ArrayList<>();

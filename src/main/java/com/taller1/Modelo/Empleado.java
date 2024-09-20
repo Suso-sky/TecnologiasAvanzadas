@@ -5,10 +5,15 @@ import java.io.Serializable;
 
 
 
-public class Empleado extends Persona implements Serializable {
+public class Empleado extends Persona implements Serializable, Identificable {
     private Cargo cargoEmpleado;
     private Double salarioEmpleado;
     private  static  final  long serialVersionUID = 1L;
+
+    @Override
+    public int getId() {
+        return getIdPersona();
+    }
 
 
     public Empleado(int idPersona, String nombresPersona, String apellidosPersona, Direccion direccion, Cargo cargoEmpleado, Double salarioEmpleado) {

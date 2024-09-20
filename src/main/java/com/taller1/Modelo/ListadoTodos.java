@@ -1,9 +1,9 @@
 package com.taller1.Modelo;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
 
 
 public class ListadoTodos implements Serializable {
