@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestorDatosH2<T extends Identificable> implements GestorDatos<T> {
+public class GestorDatosH2<T> implements GestorDatos<T> {
 
     private final Class<T> modeloClass;
     private final String nombreTabla;
@@ -16,10 +16,9 @@ public class GestorDatosH2<T extends Identificable> implements GestorDatos<T> {
 
     public GestorDatosH2(Class<T> modeloClass) {
         this.modeloClass = modeloClass;
-        this.nombreTabla = modeloClass.getSimpleName().toLowerCase() + "s"; // Convención: Clase Cargo -> tabla cargos
+        this.nombreTabla = modeloClass.getSimpleName().toLowerCase();
         this.campos = new ArrayList<>();
 
-        // Obtener todos los campos de la clase excepto el campo ID
         for (Field field : modeloClass.getDeclaredFields()) {
             field.setAccessible(true); // Permitir acceso a campos privados
             if (!field.getName().equalsIgnoreCase("id") && !field.getName().equalsIgnoreCase("id" + modeloClass.getSimpleName())) {
@@ -27,7 +26,6 @@ public class GestorDatosH2<T extends Identificable> implements GestorDatos<T> {
             }
         }
 
-        // Identificar el campo ID
         Field tempId = null;
         for (Field field : modeloClass.getDeclaredFields()) {
             if (field.getName().equalsIgnoreCase("id") || field.getName().equalsIgnoreCase("id" + modeloClass.getSimpleName())) {
@@ -53,13 +51,13 @@ public class GestorDatosH2<T extends Identificable> implements GestorDatos<T> {
         }
 
         // Remover la última coma y espacio
-        if (columnas.length() > 0) columnas.setLength(columnas.length() - 2);
-        if (placeholders.length() > 0) placeholders.setLength(placeholders.length() - 2);
+        if (!columnas.isEmpty()) columnas.setLength(columnas.length() - 2);
+        if (!placeholders.isEmpty()) placeholders.setLength(placeholders.length() - 2);
 
-        String instruccionSql = "INSERT INTO " + nombreTabla + " (" + columnas + ") VALUES (" + placeholders + ")";
+        String instructionSql = "INSERT INTO " + nombreTabla + " (" + columnas + ") VALUES (" + placeholders + ")";
 
         try (Connection conexion = ConexionDatos.conectar();
-             PreparedStatement pstmt = conexion.prepareStatement(instruccionSql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement pstmt = conexion.prepareStatement(instructionSql, Statement.RETURN_GENERATED_KEYS)) {
 
             for (int i = 0; i < campos.size(); i++) {
                 pstmt.setObject(i + 1, campos.get(i).get(objeto));
@@ -121,7 +119,7 @@ public class GestorDatosH2<T extends Identificable> implements GestorDatos<T> {
         }
 
         // Remover la última coma y espacio
-        if (setClause.length() > 0) setClause.setLength(setClause.length() - 2);
+        if (!setClause.isEmpty()) setClause.setLength(setClause.length() - 2);
 
         String instruccionSql = "UPDATE " + nombreTabla + " SET " + setClause + " WHERE " + campoId.getName() + " = ?";
 

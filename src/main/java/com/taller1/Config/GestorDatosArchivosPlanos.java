@@ -11,41 +11,42 @@ import java.util.function.Function;
 public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
 
     private final String nombreArchivo;
-    private final Function<String, T> mapper;
 
-    public GestorDatosArchivosPlanos(String nombreArchivo, Function<String, T> mapper) {
+    public GestorDatosArchivosPlanos(String nombreArchivo) {
         this.nombreArchivo = Objects.requireNonNull(nombreArchivo, "El archivo debe ser válido.");
-        this.mapper = Objects.requireNonNull(mapper, "El mapper debe ser válido.");
     }
 
     @Override
     public void guardar(T objeto) throws IOException {
         Objects.requireNonNull(objeto, "El objeto debe ser válido.");
-        try (FileWriter fw = new FileWriter(nombreArchivo, true);
-             BufferedWriter bw = new BufferedWriter(fw)) {
-            bw.write(objeto.toString());
-            bw.newLine();
-            System.out.println("Objeto guardado en archivo plano.");
+        try {
+            FileWriter guardar = new FileWriter(nombreArchivo,true);
+
+            guardar.write(objeto.toString());
+            guardar.close();
+            System.out.println("Objeto guardado.");
+        } catch(IOException error) {
+            System.out.println("Error al guardar: " + error.getMessage());
+            throw error;
         }
     }
 
     @Override
     public T leer(int id) throws Exception {
-        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
-            while ((linea = br.readLine()) != null) {
-                T objeto = mapper.apply(linea);
-                if (objeto instanceof Identificable) {
-                    if (((Identificable) objeto).getId() == id) {
-                        return objeto;
-                    }
+            while ((linea = reader.readLine()) != null) {
+                if (linea.contains("id=" + id)) {
+                    System.out.println(linea);
+                    return null;
+                    //no encontramos manera para crear un objeto a partir de un ToString
                 }
             }
         } catch(IOException error) {
             System.out.println("Error al leer del archivo plano: " + error.getMessage());
             throw error;
         }
-        return null; // O lanzar una excepción si no se encuentra
+        return null;
     }
 
     @Override
@@ -58,19 +59,8 @@ public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
         File inputFile = new File(nombreArchivo);
         File tempFile = new File("temp_" + nombreArchivo);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFile));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile))) {
-
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                T objeto = mapper.apply(linea);
-                if (objeto instanceof Identificable) {
-                    if (((Identificable) objeto).getId() != id) {
-                        bw.write(linea);
-                        bw.newLine();
-                    }
-                }
-            }
+        try(BufferedWriter eliminar = new BufferedWriter(new FileWriter(nombreArchivo))){
+            System.out.println("Objetos eliminados.");
         } catch(IOException error) {
             System.out.println("Error al eliminar del archivo plano: " + error.getMessage());
             throw error;
@@ -89,17 +79,6 @@ public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
 
     @Override
     public List<T> leerTodos() throws Exception {
-        List<T> listaTabla = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                T objeto = mapper.apply(linea);
-                listaTabla.add(objeto);
-            }
-        } catch(IOException error) {
-            System.out.println("Error al leer todos del archivo plano: " + error.getMessage());
-            throw error;
-        }
-        return listaTabla;
+        throw new UnsupportedOperationException("Funcion no implementada para archivos planos.");
     }
 }
