@@ -40,14 +40,14 @@ public class GestorDatosArchivosBinarios<T> implements GestorDatos<T> {
     }
 
     @Override
-    public void actualizar(T objeto) throws Exception {
+    public void actualizar(T objeto) {
         throw new UnsupportedOperationException("Actualización no implementada para archivos binarios.");
     }
 
     @Override
     public void eliminar(int id) throws Exception {
         try(FileOutputStream archivo = new FileOutputStream(nombreArchivo);
-            ObjectOutputStream eliminar = new ObjectOutputStream(archivo)){
+            ObjectOutputStream ignored = new ObjectOutputStream(archivo)){
             System.out.println("Objetos eliminados.");
         } catch(IOException error) {
             System.out.println("Error al eliminar archivo binario: " + error.getMessage());
@@ -56,7 +56,7 @@ public class GestorDatosArchivosBinarios<T> implements GestorDatos<T> {
     }
 
     @Override
-    public List<T> leerTodos() throws Exception {
+    public List<T> leerTodos() {
         throw new UnsupportedOperationException("Funcion no implementada para archivos binarios.");
     }
 }

@@ -1,7 +1,5 @@
 package com.taller1.Config;
 
-import com.taller1.Modelo.Identificable;
-
 import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;

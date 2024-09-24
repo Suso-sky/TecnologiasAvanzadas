@@ -1,12 +1,8 @@
 package com.taller1.Config;
 
-import com.taller1.Modelo.Identificable;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Function;
 
 public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
 
@@ -50,7 +46,7 @@ public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
     }
 
     @Override
-    public void actualizar(T objeto) throws Exception {
+    public void actualizar(T objeto) {
         throw new UnsupportedOperationException("Actualización no implementada para archivos planos.");
     }
 
@@ -59,7 +55,7 @@ public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
         File inputFile = new File(nombreArchivo);
         File tempFile = new File("temp_" + nombreArchivo);
 
-        try(BufferedWriter eliminar = new BufferedWriter(new FileWriter(nombreArchivo))){
+        try(BufferedWriter ignored = new BufferedWriter(new FileWriter(nombreArchivo))){
             System.out.println("Objetos eliminados.");
         } catch(IOException error) {
             System.out.println("Error al eliminar del archivo plano: " + error.getMessage());
@@ -78,7 +74,7 @@ public class GestorDatosArchivosPlanos<T> implements GestorDatos<T> {
     }
 
     @Override
-    public List<T> leerTodos() throws Exception {
+    public List<T> leerTodos() {
         throw new UnsupportedOperationException("Funcion no implementada para archivos planos.");
     }
 }
