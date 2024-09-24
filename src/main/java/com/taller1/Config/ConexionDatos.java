@@ -8,7 +8,7 @@ public class ConexionDatos {
 
     public static Connection conectar(){
         Connection conexionBase = null;
-        String rutaBase = "jdbc:h2:file:C:\\Users\\Estudiante_MCA\\Downloads\\taller1\\taller1\\taller1\\h2BD";
+        String rutaBase = "jdbc:h2:file:C:\\Users\\kukar\\Java\\TecnologiasAvanzadas\\Taller1\\TecnologiasAvanzadas\\h2BD";
         String usuarioBase = "brandon";
         String contraseñaBase = "";
 

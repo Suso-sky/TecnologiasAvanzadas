@@ -5290,3 +5290,26 @@ UPDATE Persona SET namePersona = ? WHERE idPersona = ? [42122-232]
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315)
 	at com.taller1.GestorDatosH2.actualizar(GestorDatosH2.java:52)
 	at com.taller1.Taller1.main(Taller1.java:113)
+2024-09-23 22:57:55.727516-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "SERIALVERSIONUID" no encontrada
+Column "SERIALVERSIONUID" not found; SQL statement:
+INSERT INTO cargo (nombreCargo, serialVersionUID) VALUES (?, ?) [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:786)
+	at org.h2.command.Parser.parseColumn(Parser.java:1171)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1156)
+	at org.h2.command.Parser.parseInsert(Parser.java:1530)
+	at org.h2.command.Parser.parsePrepared(Parser.java:698)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:556)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:1092)
+	at com.taller1.Config.GestorDatosH2.guardar(GestorDatosH2.java:58)
+	at com.taller1.Taller1.main(Taller1.java:25)
